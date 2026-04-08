@@ -1,32 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sruthin Sugunan — Data &amp; Engineering Leadership</title>
-  <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
+---
+layout: default
+---
 
-  <!--
-    Each section is loaded from its own file in sections/.
-    To update content, edit the corresponding file directly:
-
-      sections/nav.html          → Navigation bar
-      sections/hero.html         → Hero headline, description, stats
-      sections/case-studies.html → Case study write-ups
-      sections/frameworks.html   → Strategy framework cards
-      sections/philosophy.html   → Leadership philosophy
-      sections/footer.html       → Contact links & footer
-  -->
-
-  <div id="section-nav"></div>
-  <div id="section-hero"></div>
-  <div id="section-case-studies"></div>
-  <div id="section-frameworks"></div>
-  <div id="section-philosophy"></div>
-  <div id="section-footer"></div>
-
-  <script src="js/main.js"></script>
-</body>
-</html>
+{% include nav.html %}
+{% include hero.html %}
+{% include case-studies.html %}
+{% include frameworks.html %}
+{% include philosophy.html %}
+{% include footer.html %}
