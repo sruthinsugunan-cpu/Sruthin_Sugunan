@@ -1,0 +1,186 @@
+<section id="case-studies">
+  <div class="container">
+    <div class="section-label">Case Studies</div>
+    <h2 class="section-title">Strategic Wins</h2>
+    <p class="section-subtitle">
+      Selected projects demonstrating the intersection of technical execution
+      and business strategy.
+    </p>
+
+    <!-- Case Study 1: Platform Transformation -->
+    <article class="case-study fade-in">
+      <div class="case-study-header">
+        <div class="case-study-meta">
+          <span class="case-study-tag">Platform Transformation</span>
+          <h3>Real-Time Data Platform Migration</h3>
+          <p class="case-study-org">Enterprise SaaS · 2024</p>
+        </div>
+        <div class="case-study-kpi">
+          <span class="kpi-value">$12M</span>
+          <span class="kpi-label">Annual Savings</span>
+        </div>
+      </div>
+
+      <div class="diagram-container">
+        <svg viewBox="0 0 700 120" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0" y="35" width="140" height="50" rx="6" fill="#E8E8EE" stroke="#D1D1DB" stroke-width="1"/>
+          <text x="70" y="64" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="12" fill="#555770">Legacy Batch ETL</text>
+          <line x1="150" y1="60" x2="210" y2="60" stroke="#D1D1DB" stroke-width="1.5" marker-end="url(#arrow)"/>
+          <rect x="220" y="35" width="140" height="50" rx="6" fill="#E8F5F0" stroke="#0B6E4F" stroke-width="1.5"/>
+          <text x="290" y="57" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="12" font-weight="600" fill="#0B6E4F">Streaming</text>
+          <text x="290" y="72" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="12" font-weight="600" fill="#0B6E4F">Platform</text>
+          <line x1="370" y1="60" x2="430" y2="60" stroke="#D1D1DB" stroke-width="1.5" marker-end="url(#arrow)"/>
+          <rect x="440" y="35" width="140" height="50" rx="6" fill="#E8E8EE" stroke="#D1D1DB" stroke-width="1"/>
+          <text x="510" y="57" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="12" fill="#555770">Real-Time</text>
+          <text x="510" y="72" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="12" fill="#555770">Analytics</text>
+          <line x1="580" y1="60" x2="605" y2="60" stroke="#D1D1DB" stroke-width="1.5" marker-end="url(#arrow)"/>
+          <rect x="610" y="35" width="80" height="50" rx="6" fill="#0B6E4F"/>
+          <text x="650" y="57" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" font-weight="600" fill="#FFFFFF">Business</text>
+          <text x="650" y="72" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" font-weight="600" fill="#FFFFFF">Value</text>
+          <defs>
+            <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+              <path d="M0,0 L8,4 L0,8 Z" fill="#D1D1DB"/>
+            </marker>
+          </defs>
+        </svg>
+      </div>
+
+      <div class="case-study-body">
+        <h4>Challenge</h4>
+        <p>
+          A monolithic batch ETL system processing 2TB daily was creating 8-hour data latency,
+          blocking the product team's ability to deliver real-time features and causing
+          downstream ML models to train on stale data.
+        </p>
+        <h4>Approach</h4>
+        <ul>
+          <li>Led architecture review with stakeholders across Product, ML, and Finance to define SLAs</li>
+          <li>Designed a phased migration strategy — zero downtime, with parallel validation</li>
+          <li>Built a streaming platform on Kafka + Flink with schema evolution support</li>
+          <li>Established data quality gates and automated monitoring from day one</li>
+        </ul>
+        <h4>Impact</h4>
+        <div class="case-study-impact">
+          <div class="impact-item">
+            <div class="impact-value">8h → 45s</div>
+            <div class="impact-label">Data Latency</div>
+          </div>
+          <div class="impact-item">
+            <div class="impact-value">$12M/yr</div>
+            <div class="impact-label">Infra Savings</div>
+          </div>
+          <div class="impact-item">
+            <div class="impact-value">99.97%</div>
+            <div class="impact-label">Uptime SLA</div>
+          </div>
+          <div class="impact-item">
+            <div class="impact-value">3 teams</div>
+            <div class="impact-label">Unblocked</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Case Study 2: Org Design & Scale -->
+    <article class="case-study fade-in">
+      <div class="case-study-header">
+        <div class="case-study-meta">
+          <span class="case-study-tag">Org Design &amp; Scale</span>
+          <h3>Data Engineering Team from 4 to 40</h3>
+          <p class="case-study-org">Series C Fintech · 2022–2024</p>
+        </div>
+        <div class="case-study-kpi">
+          <span class="kpi-value">10×</span>
+          <span class="kpi-label">Team Growth</span>
+        </div>
+      </div>
+
+      <div class="case-study-body">
+        <h4>Challenge</h4>
+        <p>
+          Hyper-growth company needed to scale its data engineering function from a 4-person
+          team to a fully structured organization supporting 200+ data consumers — without
+          sacrificing velocity or creating bureaucratic overhead.
+        </p>
+        <h4>Approach</h4>
+        <ul>
+          <li>Designed a tiered org structure: platform core, domain-embedded engineers, and data reliability</li>
+          <li>Created career ladders, IC and management tracks, and competency frameworks</li>
+          <li>Established a hiring bar with structured interviews calibrated quarterly</li>
+          <li>Implemented team health metrics and engineering effectiveness dashboards</li>
+        </ul>
+        <h4>Impact</h4>
+        <div class="case-study-impact">
+          <div class="impact-item">
+            <div class="impact-value">4 → 40</div>
+            <div class="impact-label">Engineers</div>
+          </div>
+          <div class="impact-item">
+            <div class="impact-value">92%</div>
+            <div class="impact-label">Retention Rate</div>
+          </div>
+          <div class="impact-item">
+            <div class="impact-value">3 pods</div>
+            <div class="impact-label">Autonomous Teams</div>
+          </div>
+          <div class="impact-item">
+            <div class="impact-value">40%</div>
+            <div class="impact-label">Faster Delivery</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Case Study 3: Data Strategy -->
+    <article class="case-study fade-in">
+      <div class="case-study-header">
+        <div class="case-study-meta">
+          <span class="case-study-tag">Data Strategy</span>
+          <h3>Unified Data Governance &amp; Self-Service Analytics</h3>
+          <p class="case-study-org">Healthcare Technology · 2023</p>
+        </div>
+        <div class="case-study-kpi">
+          <span class="kpi-value">$24M</span>
+          <span class="kpi-label">Revenue Enabled</span>
+        </div>
+      </div>
+
+      <div class="case-study-body">
+        <h4>Challenge</h4>
+        <p>
+          Siloed data across 12 business units with no governance framework.
+          Analysts spent 60% of their time finding and validating data rather than
+          generating insights. Compliance risk was unquantified.
+        </p>
+        <h4>Approach</h4>
+        <ul>
+          <li>Partnered with the CDO to design an enterprise data governance framework</li>
+          <li>Built a data catalog with lineage tracking, quality scoring, and ownership mapping</li>
+          <li>Deployed a semantic layer enabling self-service analytics for 200+ business users</li>
+          <li>Created data contracts between producers and consumers with automated enforcement</li>
+        </ul>
+        <h4>Impact</h4>
+        <div class="case-study-impact">
+          <div class="impact-item">
+            <div class="impact-value">60%</div>
+            <div class="impact-label">Less Data Prep</div>
+          </div>
+          <div class="impact-item">
+            <div class="impact-value">$24M</div>
+            <div class="impact-label">Revenue Unlocked</div>
+          </div>
+          <div class="impact-item">
+            <div class="impact-value">200+</div>
+            <div class="impact-label">Self-Service Users</div>
+          </div>
+          <div class="impact-item">
+            <div class="impact-value">Zero</div>
+            <div class="impact-label">Compliance Gaps</div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<hr class="divider">
