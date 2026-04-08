@@ -1,0 +1,15 @@
+title: "Sruthin Sugunan — Data & Engineering Leadership"
+description: "Portfolio of Sruthin Sugunan, Director of Data Engineering."
+url: "https://sruthinsugunan-cpu.github.io"
+baseurl: "/Sruthin_Sugunan"
+
+collections:
+  case_studies:
+    output: false
+    sort_by: order
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor

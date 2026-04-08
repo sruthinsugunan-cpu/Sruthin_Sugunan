@@ -1,0 +1,12 @@
+<footer id="contact">
+  <div class="container">
+    <h2 class="footer-heading">{{ site.data.contact.heading }}</h2>
+    <p class="footer-text">{{ site.data.contact.text }}</p>
+    <div class="footer-links">
+      {% for link in site.data.contact.links %}
+      <a href="{{ link.url }}"{% if link.external %} target="_blank" rel="noopener"{% endif %}>{{ link.label }}</a>
+      {% endfor %}
+    </div>
+    <p class="footer-copy">&copy; {{ site.data.contact.copyright }}</p>
+  </div>
+</footer>
