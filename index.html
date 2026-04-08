@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sruthin Sugunan — Data &amp; Engineering Leadership</title>
+  <style>
+    :root {
+      --color-bg: #FAFAFA;
+      --color-surface: #FFFFFF;
+      --color-text: #1A1A2E;
+      --color-text-secondary: #555770;
+      --color-accent: #2D3142;
+      --color-highlight: #4F5D75;
+      --color-metric: #0B6E4F;
+      --color-metric-bg: #E8F5F0;
+      --color-border: #E8E8EE;
+      --color-divider: #D1D1DB;
+      --font-heading: 'Georgia', 'Times New Roman', serif;
+      --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif;
+      --font-mono: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+      --max-width: 860px;
+      --space-xs: 0.5rem;
+      --space-sm: 1rem;
+      --space-md: 2rem;
+      --space-lg: 4rem;
+      --space-xl: 6rem;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--color-text);
+      background: var(--color-bg);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    ::selection {
+      background: var(--color-accent);
+      color: #fff;
+    }
+
+    /* ── Navigation ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(250, 250, 250, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--color-border);
+      transition: box-shadow 0.3s ease;
+    }
+
+    nav.scrolled { box-shadow: 0 1px 8px rgba(0,0,0,0.06); }
+
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0.9rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--color-accent);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links { display: flex; gap: 2rem; align-items: center; }
+
+    .nav-links a {
+      font-size: 0.82rem;
+      text-decoration: none;
+      color: var(--color-text-secondary);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover { color: var(--color-text); }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.25rem;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--color-accent);
+      margin: 4px 0;
+      transition: all 0.3s ease;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: calc(var(--space-xl) + 3rem) 1.5rem var(--space-xl);
+      min-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .hero-label {
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-highlight);
+      margin-bottom: var(--space-sm);
+      font-weight: 600;
+    }
+
+    .hero h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--color-accent);
+      letter-spacing: -0.03em;
+      margin-bottom: var(--space-md);
+    }
+
+    .hero-description {
+      font-size: 1.15rem;
+      color: var(--color-text-secondary);
+      max-width: 600px;
+      line-height: 1.75;
+      margin-bottom: var(--space-lg);
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1px;
+      background: var(--color-border);
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      overflow: hidden;
+      max-width: 600px;
+    }
+
+    .hero-stat {
+      background: var(--color-surface);
+      padding: 1.5rem;
+    }
+
+    .hero-stat-value {
+      font-family: var(--font-mono);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--color-metric);
+      letter-spacing: -0.02em;
+    }
+
+    .hero-stat-label {
+      font-size: 0.78rem;
+      color: var(--color-text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-top: 0.25rem;
+    }
+
+    /* ── Sections ── */
+    section { padding: var(--space-xl) 1.5rem; }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-highlight);
+      font-weight: 600;
+      margin-bottom: var(--space-xs);
+    }
+
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+      font-weight: 700;
+      color: var(--color-accent);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: var(--space-sm);
+    }
+
+    .section-subtitle {
+      font-size: 1.05rem;
+      color: var(--color-text-secondary);
+      max-width: 560px;
+      line-height: 1.7;
+      margin-bottom: var(--space-lg);
+    }
+
+    /* ── Case Studies ── */
+    .case-study {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 10px;
+      padding: var(--space-md) var(--space-md) var(--space-md);
+      margin-bottom: var(--space-md);
+      transition: box-shadow 0.3s ease, transform 0.2s ease;
+    }
+
+    .case-study:hover {
+      box-shadow: 0 4px 24px rgba(0,0,0,0.05);
+      transform: translateY(-2px);
+    }
+
+    .case-study-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: var(--space-md);
+      margin-bottom: var(--space-md);
+      flex-wrap: wrap;
+    }
+
+    .case-study-meta { flex: 1; min-width: 280px; }
+
+    .case-study-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--color-metric);
+      background: var(--color-metric-bg);
+      padding: 0.3rem 0.7rem;
+      border-radius: 4px;
+      margin-bottom: 0.75rem;
+    }
+
+    .case-study h3 {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--color-accent);
+      letter-spacing: -0.01em;
+      line-height: 1.3;
+      margin-bottom: 0.5rem;
+    }
+
+    .case-study-org {
+      font-size: 0.85rem;
+      color: var(--color-text-secondary);
+    }
+
+    .case-study-kpi {
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+      padding: 1.25rem 1.5rem;
+      background: var(--color-bg);
+      border-radius: 8px;
+      min-width: 180px;
+      text-align: center;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .kpi-value {
+      font-family: var(--font-mono);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--color-metric);
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+
+    .kpi-label {
+      font-size: 0.75rem;
+      color: var(--color-text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .case-study-body { margin-bottom: var(--space-md); }
+
+    .case-study-body h4 {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-highlight);
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+      margin-top: 1.5rem;
+    }
+
+    .case-study-body h4:first-child { margin-top: 0; }
+
+    .case-study-body p {
+      font-size: 0.95rem;
+      color: var(--color-text-secondary);
+      line-height: 1.75;
+    }
+
+    .case-study-body ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .case-study-body ul li {
+      font-size: 0.95rem;
+      color: var(--color-text-secondary);
+      line-height: 1.75;
+      padding-left: 1.2rem;
+      position: relative;
+    }
+
+    .case-study-body ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.7rem;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--color-metric);
+    }
+
+    .case-study-impact {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1px;
+      background: var(--color-border);
+      border: 1px solid var(--color-border);
+      border-radius: 6px;
+      overflow: hidden;
+      margin-top: 1.5rem;
+    }
+
+    .impact-item {
+      background: var(--color-surface);
+      padding: 1rem 1.25rem;
+    }
+
+    .impact-value {
+      font-family: var(--font-mono);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--color-metric);
+    }
+
+    .impact-label {
+      font-size: 0.72rem;
+      color: var(--color-text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: 0.15rem;
+    }
+
+    /* ── Strategy Frameworks ── */
+    .frameworks-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-md);
+    }
+
+    .framework-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 10px;
+      padding: var(--space-md);
+      transition: box-shadow 0.3s ease;
+    }
+
+    .framework-card:hover { box-shadow: 0 4px 24px rgba(0,0,0,0.05); }
+
+    .framework-number {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--color-divider);
+      font-weight: 700;
+      margin-bottom: var(--space-sm);
+    }
+
+    .framework-card h3 {
+      font-family: var(--font-heading);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--color-accent);
+      letter-spacing: -0.01em;
+      margin-bottom: 0.75rem;
+      line-height: 1.3;
+    }
+
+    .framework-card > p {
+      font-size: 0.95rem;
+      color: var(--color-text-secondary);
+      line-height: 1.75;
+      margin-bottom: 1.25rem;
+    }
+
+    .framework-pillars {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .pillar {
+      padding: 1rem 1.25rem;
+      background: var(--color-bg);
+      border-radius: 6px;
+    }
+
+    .pillar-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-accent);
+      margin-bottom: 0.35rem;
+    }
+
+    .pillar-text {
+      font-size: 0.82rem;
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+    }
+
+    /* ── Diagram (inline SVG) ── */
+    .diagram-container {
+      margin: 1.5rem 0;
+      padding: 1.5rem;
+      background: var(--color-bg);
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .diagram-container svg {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* ── Philosophy / About ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-md);
+    }
+
+    .about-block h3 {
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--color-accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .about-block p {
+      font-size: 0.95rem;
+      color: var(--color-text-secondary);
+      line-height: 1.75;
+    }
+
+    /* ── Divider ── */
+    .divider {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      border: none;
+      border-top: 1px solid var(--color-border);
+    }
+
+    /* ── Footer ── */
+    footer {
+      padding: var(--space-lg) 1.5rem;
+      text-align: center;
+    }
+
+    footer .container { max-width: var(--max-width); margin: 0 auto; }
+
+    .footer-heading {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--color-accent);
+      margin-bottom: var(--space-sm);
+    }
+
+    .footer-text {
+      font-size: 0.95rem;
+      color: var(--color-text-secondary);
+      margin-bottom: var(--space-md);
+    }
+
+    .footer-links { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; }
+
+    .footer-links a {
+      font-size: 0.85rem;
+      color: var(--color-text-secondary);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .footer-links a:hover { color: var(--color-text); }
+
+    .footer-copy {
+      margin-top: var(--space-lg);
+      font-size: 0.75rem;
+      color: var(--color-divider);
+    }
+
+    /* ── Animations ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(250,250,250,0.98);
+        backdrop-filter: blur(12px);
+        padding: 1rem 1.5rem;
+        gap: 1rem;
+        border-bottom: 1px solid var(--color-border);
+      }
+      .nav-toggle { display: block; }
+      .hero { min-height: 70vh; padding-top: calc(var(--space-lg) + 2rem); }
+      .hero-stats { grid-template-columns: 1fr 1fr; }
+      .case-study-header { flex-direction: column; }
+      .case-study-kpi { flex-direction: row; justify-content: center; gap: 0.75rem; }
+      .about-grid { grid-template-columns: 1fr; }
+      section { padding: var(--space-lg) 1.5rem; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-stats { grid-template-columns: 1fr; }
+      .case-study-impact { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">Sruthin Sugunan</a>
+      <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links">
+        <a href="#case-studies">Case Studies</a>
+        <a href="#frameworks">Strategy</a>
+        <a href="#philosophy">Philosophy</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="hero-label">Data &amp; Engineering Leadership</div>
+    <h1>Building data platforms<br>that drive business&nbsp;outcomes.</h1>
+    <p class="hero-description">
+      Director of Data Engineering with a track record of transforming data infrastructure
+      into strategic assets. I build high-performing teams, architect scalable platforms,
+      and align technical investment with measurable business&nbsp;value.
+    </p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-value">$24M+</div>
+        <div class="hero-stat-label">Revenue Impact</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-value">60%</div>
+        <div class="hero-stat-label">Cost Reduction</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-value">4→40</div>
+        <div class="hero-stat-label">Team Scaling</div>
+      </div>
+    </div>
+  </header>
+
+  <hr class="divider">
+
+  <!-- Case Studies -->
+  <section id="case-studies">
+    <div class="container">
+      <div class="section-label">Case Studies</div>
+      <h2 class="section-title">Strategic Wins</h2>
+      <p class="section-subtitle">
+        Selected projects demonstrating the intersection of technical execution
+        and business strategy.
+      </p>
+
+      <!-- Case Study 1 -->
+      <article class="case-study fade-in">
+        <div class="case-study-header">
+          <div class="case-study-meta">
+            <span class="case-study-tag">Platform Transformation</span>
+            <h3>Real-Time Data Platform Migration</h3>
+            <p class="case-study-org">Enterprise SaaS · 2024</p>
+          </div>
+          <div class="case-study-kpi">
+            <span class="kpi-value">$12M</span>
+            <span class="kpi-label">Annual Savings</span>
+          </div>
+        </div>
+
+        <div class="diagram-container">
+          <svg viewBox="0 0 700 120" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0" y="35" width="140" height="50" rx="6" fill="#E8E8EE" stroke="#D1D1DB" stroke-width="1"/>
+            <text x="70" y="64" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="12" fill="#555770">Legacy Batch ETL</text>
+            <line x1="150" y1="60" x2="210" y2="60" stroke="#D1D1DB" stroke-width="1.5" marker-end="url(#arrow)"/>
+            <rect x="220" y="35" width="140" height="50" rx="6" fill="#E8F5F0" stroke="#0B6E4F" stroke-width="1.5"/>
+            <text x="290" y="57" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="12" font-weight="600" fill="#0B6E4F">Streaming</text>
+            <text x="290" y="72" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="12" font-weight="600" fill="#0B6E4F">Platform</text>
+            <line x1="370" y1="60" x2="430" y2="60" stroke="#D1D1DB" stroke-width="1.5" marker-end="url(#arrow)"/>
+            <rect x="440" y="35" width="140" height="50" rx="6" fill="#E8E8EE" stroke="#D1D1DB" stroke-width="1"/>
+            <text x="510" y="57" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="12" fill="#555770">Real-Time</text>
+            <text x="510" y="72" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="12" fill="#555770">Analytics</text>
+            <line x1="580" y1="60" x2="605" y2="60" stroke="#D1D1DB" stroke-width="1.5" marker-end="url(#arrow)"/>
+            <rect x="610" y="35" width="80" height="50" rx="6" fill="#0B6E4F"/>
+            <text x="650" y="57" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" font-weight="600" fill="#FFFFFF">Business</text>
+            <text x="650" y="72" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" font-weight="600" fill="#FFFFFF">Value</text>
+            <defs>
+              <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                <path d="M0,0 L8,4 L0,8 Z" fill="#D1D1DB"/>
+              </marker>
+            </defs>
+          </svg>
+        </div>
+
+        <div class="case-study-body">
+          <h4>Challenge</h4>
+          <p>
+            A monolithic batch ETL system processing 2TB daily was creating 8-hour data latency,
+            blocking the product team's ability to deliver real-time features and causing
+            downstream ML models to train on stale data.
+          </p>
+          <h4>Approach</h4>
+          <ul>
+            <li>Led architecture review with stakeholders across Product, ML, and Finance to define SLAs</li>
+            <li>Designed a phased migration strategy — zero downtime, with parallel validation</li>
+            <li>Built a streaming platform on Kafka + Flink with schema evolution support</li>
+            <li>Established data quality gates and automated monitoring from day one</li>
+          </ul>
+          <h4>Impact</h4>
+          <div class="case-study-impact">
+            <div class="impact-item">
+              <div class="impact-value">8h → 45s</div>
+              <div class="impact-label">Data Latency</div>
+            </div>
+            <div class="impact-item">
+              <div class="impact-value">$12M/yr</div>
+              <div class="impact-label">Infra Savings</div>
+            </div>
+            <div class="impact-item">
+              <div class="impact-value">99.97%</div>
+              <div class="impact-label">Uptime SLA</div>
+            </div>
+            <div class="impact-item">
+              <div class="impact-value">3 teams</div>
+              <div class="impact-label">Unblocked</div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Case Study 2 -->
+      <article class="case-study fade-in">
+        <div class="case-study-header">
+          <div class="case-study-meta">
+            <span class="case-study-tag">Org Design &amp; Scale</span>
+            <h3>Data Engineering Team from 4 to 40</h3>
+            <p class="case-study-org">Series C Fintech · 2022–2024</p>
+          </div>
+          <div class="case-study-kpi">
+            <span class="kpi-value">10×</span>
+            <span class="kpi-label">Team Growth</span>
+          </div>
+        </div>
+
+        <div class="case-study-body">
+          <h4>Challenge</h4>
+          <p>
+            Hyper-growth company needed to scale its data engineering function from a 4-person
+            team to a fully structured organization supporting 200+ data consumers — without
+            sacrificing velocity or creating bureaucratic overhead.
+          </p>
+          <h4>Approach</h4>
+          <ul>
+            <li>Designed a tiered org structure: platform core, domain-embedded engineers, and data reliability</li>
+            <li>Created career ladders, IC and management tracks, and competency frameworks</li>
+            <li>Established a hiring bar with structured interviews calibrated quarterly</li>
+            <li>Implemented team health metrics and engineering effectiveness dashboards</li>
+          </ul>
+          <h4>Impact</h4>
+          <div class="case-study-impact">
+            <div class="impact-item">
+              <div class="impact-value">4 → 40</div>
+              <div class="impact-label">Engineers</div>
+            </div>
+            <div class="impact-item">
+              <div class="impact-value">92%</div>
+              <div class="impact-label">Retention Rate</div>
+            </div>
+            <div class="impact-item">
+              <div class="impact-value">3 pods</div>
+              <div class="impact-label">Autonomous Teams</div>
+            </div>
+            <div class="impact-item">
+              <div class="impact-value">40%</div>
+              <div class="impact-label">Faster Delivery</div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Case Study 3 -->
+      <article class="case-study fade-in">
+        <div class="case-study-header">
+          <div class="case-study-meta">
+            <span class="case-study-tag">Data Strategy</span>
+            <h3>Unified Data Governance &amp; Self-Service Analytics</h3>
+            <p class="case-study-org">Healthcare Technology · 2023</p>
+          </div>
+          <div class="case-study-kpi">
+            <span class="kpi-value">$24M</span>
+            <span class="kpi-label">Revenue Enabled</span>
+          </div>
+        </div>
+
+        <div class="case-study-body">
+          <h4>Challenge</h4>
+          <p>
+            Siloed data across 12 business units with no governance framework.
+            Analysts spent 60% of their time finding and validating data rather than
+            generating insights. Compliance risk was unquantified.
+          </p>
+          <h4>Approach</h4>
+          <ul>
+            <li>Partnered with the CDO to design an enterprise data governance framework</li>
+            <li>Built a data catalog with lineage tracking, quality scoring, and ownership mapping</li>
+            <li>Deployed a semantic layer enabling self-service analytics for 200+ business users</li>
+            <li>Created data contracts between producers and consumers with automated enforcement</li>
+          </ul>
+          <h4>Impact</h4>
+          <div class="case-study-impact">
+            <div class="impact-item">
+              <div class="impact-value">60%</div>
+              <div class="impact-label">Less Data Prep</div>
+            </div>
+            <div class="impact-item">
+              <div class="impact-value">$24M</div>
+              <div class="impact-label">Revenue Unlocked</div>
+            </div>
+            <div class="impact-item">
+              <div class="impact-value">200+</div>
+              <div class="impact-label">Self-Service Users</div>
+            </div>
+            <div class="impact-item">
+              <div class="impact-value">Zero</div>
+              <div class="impact-label">Compliance Gaps</div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- Strategy Frameworks -->
+  <section id="frameworks">
+    <div class="container">
+      <div class="section-label">Strategy Frameworks</div>
+      <h2 class="section-title">How I Lead</h2>
+      <p class="section-subtitle">
+        Principles and frameworks I use to align data engineering with business
+        objectives and build organizations that scale.
+      </p>
+
+      <div class="frameworks-grid">
+
+        <!-- Framework 1 -->
+        <div class="framework-card fade-in">
+          <div class="framework-number">01</div>
+          <h3>Value-Driven Prioritization</h3>
+          <p>
+            Every technical initiative maps to a business outcome. I use a structured
+            prioritization model that scores projects on revenue impact, risk reduction,
+            and organizational leverage — ensuring engineering effort compounds.
+          </p>
+          <div class="framework-pillars">
+            <div class="pillar">
+              <div class="pillar-title">Revenue Alignment</div>
+              <div class="pillar-text">Score each project on direct and indirect revenue contribution. Kill projects that don't move the needle.</div>
+            </div>
+            <div class="pillar">
+              <div class="pillar-title">Risk Quantification</div>
+              <div class="pillar-text">Translate technical debt into business risk with dollar-denominated exposure models.</div>
+            </div>
+            <div class="pillar">
+              <div class="pillar-title">Leverage Index</div>
+              <div class="pillar-text">Prioritize platforms and shared capabilities that unblock multiple teams simultaneously.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Framework 2 -->
+        <div class="framework-card fade-in">
+          <div class="framework-number">02</div>
+          <h3>Platform Thinking at Scale</h3>
+          <p>
+            Data platforms are products. I apply product management principles —
+            user research, iterative delivery, and success metrics — to internal
+            infrastructure, treating engineers and analysts as customers.
+          </p>
+          <div class="framework-pillars">
+            <div class="pillar">
+              <div class="pillar-title">Internal Product Model</div>
+              <div class="pillar-text">Define platform SLAs, track adoption, and measure time-to-insight as core KPIs.</div>
+            </div>
+            <div class="pillar">
+              <div class="pillar-title">Paved Roads</div>
+              <div class="pillar-text">Build golden paths that make the right thing the easy thing — reducing cognitive load for consumers.</div>
+            </div>
+            <div class="pillar">
+              <div class="pillar-title">Evolutionary Architecture</div>
+              <div class="pillar-text">Design for change. Use fitness functions and modularity to ensure the platform adapts as the business evolves.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Framework 3 -->
+        <div class="framework-card fade-in">
+          <div class="framework-number">03</div>
+          <h3>Engineering Culture as Competitive Advantage</h3>
+          <p>
+            The highest-performing teams are built on psychological safety, clear
+            ownership, and relentless focus on impact. I invest in culture
+            intentionally — it's not a side effect, it's a strategy.
+          </p>
+          <div class="framework-pillars">
+            <div class="pillar">
+              <div class="pillar-title">Ownership Clarity</div>
+              <div class="pillar-text">Every system, pipeline, and dataset has a single accountable owner. Ambiguity is a scaling bottleneck.</div>
+            </div>
+            <div class="pillar">
+              <div class="pillar-title">Blameless Execution</div>
+              <div class="pillar-text">Incident reviews focus on systems, not individuals. Learning velocity matters more than perfection.</div>
+            </div>
+            <div class="pillar">
+              <div class="pillar-title">Visible Impact</div>
+              <div class="pillar-text">Connect every engineer's work to business outcomes they can see. Motivation follows meaning.</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- Philosophy -->
+  <section id="philosophy">
+    <div class="container">
+      <div class="section-label">Leadership Philosophy</div>
+      <h2 class="section-title">What I Believe</h2>
+      <p class="section-subtitle">
+        Convictions shaped by building and scaling data organizations
+        across industries.
+      </p>
+
+      <div class="about-grid">
+        <div class="about-block fade-in">
+          <h3>Data is infrastructure, not a feature</h3>
+          <p>
+            The most impactful data organizations are embedded in the business,
+            not siloed as service desks. Data engineering should be a first-class
+            strategic function with a seat at the planning table.
+          </p>
+        </div>
+        <div class="about-block fade-in">
+          <h3>Invest in the multipliers</h3>
+          <p>
+            The best engineering leaders spend their time on the things that
+            make everyone else faster — platforms, processes, and people
+            development. Individual heroics don't scale.
+          </p>
+        </div>
+        <div class="about-block fade-in">
+          <h3>Measure what matters</h3>
+          <p>
+            Vanity metrics obscure truth. I focus teams on leading indicators
+            tied to business outcomes: time-to-insight, data freshness,
+            pipeline reliability, and consumer satisfaction.
+          </p>
+        </div>
+        <div class="about-block fade-in">
+          <h3>Build for the next 10× of scale</h3>
+          <p>
+            Architecture decisions should serve today's load and tomorrow's
+            ambition. I design systems that handle 10× growth without
+            re-architecture, while staying pragmatic about over-engineering.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- Contact / Footer -->
+  <footer id="contact">
+    <div class="container">
+      <h2 class="footer-heading">Let's Connect</h2>
+      <p class="footer-text">
+        Open to conversations about VP/SVP Data Engineering roles,
+        advisory engagements, and building world-class data organizations.
+      </p>
+      <div class="footer-links">
+        <a href="mailto:sruthin@example.com">Email</a>
+        <a href="https://linkedin.com/in/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 Sruthin Sugunan. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll-based nav shadow
+    const nav = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 10);
+    }, { passive: true });
+
+    // Intersection Observer for fade-in animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Smooth scroll for nav links
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', (e) => {
+        const href = link.getAttribute('href');
+        if (href.startsWith('#')) {
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            document.querySelector('.nav-links').classList.remove('open');
+          }
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
