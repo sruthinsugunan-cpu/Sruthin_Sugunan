@@ -1,0 +1,14 @@
+heading: "Let's Connect"
+text: >-
+  Open to conversations about VP/SVP Data Engineering roles,
+  advisory engagements, and building world-class data organizations.
+links:
+  - label: Email
+    url: "mailto:sruthin@example.com"
+  - label: LinkedIn
+    url: "https://linkedin.com/in/"
+    external: true
+  - label: GitHub
+    url: "https://github.com/"
+    external: true
+copyright: "2026 Sruthin Sugunan. All rights reserved."

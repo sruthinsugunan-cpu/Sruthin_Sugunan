@@ -1,0 +1,30 @@
+<section id="frameworks">
+  <div class="container">
+    <div class="section-label">Strategy Frameworks</div>
+    <h2 class="section-title">How I Lead</h2>
+    <p class="section-subtitle">
+      Principles and frameworks I use to align data engineering with business
+      objectives and build organizations that scale.
+    </p>
+
+    <div class="frameworks-grid">
+      {% for framework in site.data.frameworks %}
+      <div class="framework-card fade-in">
+        <div class="framework-number">{{ framework.number }}</div>
+        <h3>{{ framework.title }}</h3>
+        <p>{{ framework.description }}</p>
+        <div class="framework-pillars">
+          {% for pillar in framework.pillars %}
+          <div class="pillar">
+            <div class="pillar-title">{{ pillar.title }}</div>
+            <div class="pillar-text">{{ pillar.text }}</div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<hr class="divider">

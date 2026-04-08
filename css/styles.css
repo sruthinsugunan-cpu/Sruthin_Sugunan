@@ -293,6 +293,7 @@ section { padding: var(--space-xl) 1.5rem; }
 
 .case-study-body { margin-bottom: var(--space-md); }
 
+.case-study-body h2,
 .case-study-body h4 {
   font-size: 0.75rem;
   letter-spacing: 0.1em;
@@ -301,8 +302,10 @@ section { padding: var(--space-xl) 1.5rem; }
   font-weight: 600;
   margin-bottom: 0.6rem;
   margin-top: 1.5rem;
+  font-family: var(--font-body);
 }
 
+.case-study-body h2:first-child,
 .case-study-body h4:first-child { margin-top: 0; }
 
 .case-study-body p {

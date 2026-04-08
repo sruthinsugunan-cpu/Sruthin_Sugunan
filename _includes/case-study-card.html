@@ -1,0 +1,36 @@
+{% assign study = include.study %}
+<article class="case-study fade-in">
+  <div class="case-study-header">
+    <div class="case-study-meta">
+      <span class="case-study-tag">{{ study.tag }}</span>
+      <h3>{{ study.title }}</h3>
+      <p class="case-study-org">{{ study.org }}</p>
+    </div>
+    <div class="case-study-kpi">
+      <span class="kpi-value">{{ study.kpi_value }}</span>
+      <span class="kpi-label">{{ study.kpi_label }}</span>
+    </div>
+  </div>
+
+  {% if study.diagram %}
+  <div class="diagram-container">
+    {% include diagrams/{{ study.diagram }}.svg %}
+  </div>
+  {% endif %}
+
+  <div class="case-study-body">
+    {{ study.content }}
+
+    {% if study.impact %}
+    <h4>Impact</h4>
+    <div class="case-study-impact">
+      {% for item in study.impact %}
+      <div class="impact-item">
+        <div class="impact-value">{{ item.value }}</div>
+        <div class="impact-label">{{ item.label }}</div>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+</article>

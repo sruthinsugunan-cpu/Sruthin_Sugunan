@@ -1,0 +1,21 @@
+<section id="philosophy">
+  <div class="container">
+    <div class="section-label">Leadership Philosophy</div>
+    <h2 class="section-title">What I Believe</h2>
+    <p class="section-subtitle">
+      Convictions shaped by building and scaling data organizations
+      across industries.
+    </p>
+
+    <div class="about-grid">
+      {% for belief in site.data.philosophy %}
+      <div class="about-block fade-in">
+        <h3>{{ belief.title }}</h3>
+        <p>{{ belief.text }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<hr class="divider">

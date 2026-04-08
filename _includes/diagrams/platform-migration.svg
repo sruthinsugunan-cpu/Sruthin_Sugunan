@@ -1,0 +1,21 @@
+<svg viewBox="0 0 700 120" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#D1D1DB"/>
+    </marker>
+  </defs>
+  <rect x="0" y="35" width="140" height="50" rx="6" fill="#E8E8EE" stroke="#D1D1DB" stroke-width="1"/>
+  <text x="70" y="64" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="12" fill="#555770">Legacy Batch ETL</text>
+  <line x1="150" y1="60" x2="210" y2="60" stroke="#D1D1DB" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="220" y="35" width="140" height="50" rx="6" fill="#E8F5F0" stroke="#0B6E4F" stroke-width="1.5"/>
+  <text x="290" y="57" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="12" font-weight="600" fill="#0B6E4F">Streaming</text>
+  <text x="290" y="72" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="12" font-weight="600" fill="#0B6E4F">Platform</text>
+  <line x1="370" y1="60" x2="430" y2="60" stroke="#D1D1DB" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="440" y="35" width="140" height="50" rx="6" fill="#E8E8EE" stroke="#D1D1DB" stroke-width="1"/>
+  <text x="510" y="57" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="12" fill="#555770">Real-Time</text>
+  <text x="510" y="72" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="12" fill="#555770">Analytics</text>
+  <line x1="580" y1="60" x2="605" y2="60" stroke="#D1D1DB" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="610" y="35" width="80" height="50" rx="6" fill="#0B6E4F"/>
+  <text x="650" y="57" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" font-weight="600" fill="#FFFFFF">Business</text>
+  <text x="650" y="72" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" font-weight="600" fill="#FFFFFF">Value</text>
+</svg>

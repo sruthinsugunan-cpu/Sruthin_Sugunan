@@ -1,0 +1,41 @@
+- number: "01"
+  title: Value-Driven Prioritization
+  description: >-
+    Every technical initiative maps to a business outcome. I use a structured
+    prioritization model that scores projects on revenue impact, risk reduction,
+    and organizational leverage — ensuring engineering effort compounds.
+  pillars:
+    - title: Revenue Alignment
+      text: "Score each project on direct and indirect revenue contribution. Kill projects that don't move the needle."
+    - title: Risk Quantification
+      text: "Translate technical debt into business risk with dollar-denominated exposure models."
+    - title: Leverage Index
+      text: "Prioritize platforms and shared capabilities that unblock multiple teams simultaneously."
+
+- number: "02"
+  title: Platform Thinking at Scale
+  description: >-
+    Data platforms are products. I apply product management principles —
+    user research, iterative delivery, and success metrics — to internal
+    infrastructure, treating engineers and analysts as customers.
+  pillars:
+    - title: Internal Product Model
+      text: "Define platform SLAs, track adoption, and measure time-to-insight as core KPIs."
+    - title: Paved Roads
+      text: "Build golden paths that make the right thing the easy thing — reducing cognitive load for consumers."
+    - title: Evolutionary Architecture
+      text: "Design for change. Use fitness functions and modularity to ensure the platform adapts as the business evolves."
+
+- number: "03"
+  title: Engineering Culture as Competitive Advantage
+  description: >-
+    The highest-performing teams are built on psychological safety, clear
+    ownership, and relentless focus on impact. I invest in culture
+    intentionally — it's not a side effect, it's a strategy.
+  pillars:
+    - title: Ownership Clarity
+      text: "Every system, pipeline, and dataset has a single accountable owner. Ambiguity is a scaling bottleneck."
+    - title: Blameless Execution
+      text: "Incident reviews focus on systems, not individuals. Learning velocity matters more than perfection."
+    - title: Visible Impact
+      text: "Connect every engineer's work to business outcomes they can see. Motivation follows meaning."
